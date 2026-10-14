@@ -167,50 +167,26 @@ Plain Markdown with no index or database. It is read and written only when the t
 
 ## Built with the system
 
-Real projects the team has shipped or is building. Each one follows the same loop: plan, route to the right specialist, build, have Oscar verify, and get the founder's approval.
+How the team works on real projects. Every project runs the same loop: plan → route each step to the right agent and model → build → Oscar verifies → the founder approves.
 
-### MOR27 AI — personal job-search hub *(private)*
-"My Own Recruiter 2027": a local web app that runs on your own PC. Claude does the AI work.
-- **What it does:**
-  - Collects postings from company job boards (Greenhouse, Lever, Ashby, SmartRecruiters, Workday) and public listing pages.
-  - Scores every job 0–100 against the user's own profile. The factors are role, commute, experience, skills, pay and freshness.
-  - Tailors CV bullets and cover letters, using only facts already in the CV.
-  - Tracks every application and draws maps of jobs and target companies.
-  - Writes a weekly review.
-- **Private by design:** All data stays in a local database. The app only drafts and recommends; it never applies, sends or messages anything by itself.
-- **Stack:** FastAPI, SQLite and React/Vite, with a one-click Windows installer.
-- **How the team built it:**
-  - **Victor** owned the phased plan.
-  - **Neo** wrote the scoring spec and the tested scoring cases.
-  - **Dana** measured how well the scores matched real jobs (calibration).
-  - **Alex** ran a design gate: no UI code until the founder approved a direction from three prototypes.
-  - **Sam** built the backend, the UI and the collection pipeline.
-  - **Oscar** gated every phase.
-- **Pace:** about 100 commits and 76 versions in its first week.
+### MOR27 AI *(private)*
+- **Victor** split the work into phases, each with an owner, a verifier and an Oscar gate.
+- Work ran **in parallel where it could**:
+  - **Sam** built the backend.
+  - At the same time, **Neo** wrote the scoring logic and its test cases.
+  - **Alex** ran a design gate: no UI code until the founder picked a direction.
+- **Sam** then built the UI from Alex's approved spec.
+- **Dana** checked the scores against real data.
+- **Oscar** reviewed every phase and returned PASS or SEND BACK with evidence. Fixes went back to the owner, never to Oscar.
 
-### ROME AI — always-on personal assistant *(private, in progress)*
-A from-scratch voice assistant for Windows with a $0 running-cost target. It is built as a cost funnel: each request falls through cheap local layers first, and only the hard leftovers reach a free cloud model.
-- **Pipeline:** wake word, then Whisper speech-to-text, then a reflex layer of 67 commands, then semantic memory with hybrid recall (synced with Obsidian), then a local LLM brain with 13 tools, then Kokoro TTS.
-- **Engineering discipline:**
-  - Every interaction writes one trace row.
-  - Nothing is learned without an eval.
-  - Each phase has its own plan, and Oscar reviews every phase gate.
-- **Progress:** Phases 0–2 are done (foundation, senses and reflex, memory). Phase 3, the local brain, is about 90% done.
-- **Measured so far:**
-  - Reflex commands: 155/155
-  - Memory recall: 35/37
-  - Speech-to-text: about 0.42 s
-  - Tool selection: 86.7%
-- **How the team builds it:**
-  - An Opus orchestrator writes each phase's plan and runs the independent agents in parallel. It writes no code.
-  - **Neo** owns the AI layers.
-  - **Sam** owns the runtime and the tests.
-  - **Dana** owns the trace schema, the evals and the metrics.
-  - **Oscar** runs the phase-gate reviews.
-
-### Open-source apps (AEYS Innovations)
-- **[TONY App](https://github.com/aesatyilmaz/TONY-App):** say "Tony", then a command. It is a fully local Windows voice assistant with 63 fixed commands and webcam gesture input. There is no cloud, no account and no API key.
-- **[VISION App](https://github.com/aesatyilmaz/VISION-App):** control the computer with your hands through a webcam. You can move the mouse, click, scroll, change the volume and switch windows. It runs locally and is packaged as a double-click Windows app.
+### ROME AI *(private, in progress)*
+- An Opus orchestrator writes each phase's plan and assigns the agents. It writes no code itself.
+- **Each agent owns one layer:**
+  - **Neo:** the AI layers.
+  - **Sam:** the runtime and the tests.
+  - **Dana:** the trace schema, the evals and the metrics.
+- **Oscar** runs every phase-gate review.
+- **Nothing ships on a feeling.** Each phase closes on measured results, and the founder approves every phase.
 
 ---
 
