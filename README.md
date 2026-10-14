@@ -37,6 +37,104 @@ Oscar: Observer (independent quality gate; never fixes another agent's work)
 
 ---
 
+## Meet the team
+
+Every agent opens each reply with its name and role ("Sam, Software Engineer, AEYS Group"), so the founder always knows who is speaking. Each persona was distilled from several open-source agent libraries into one focused role. The full definitions are in [`agents/`](agents/).
+
+### 🧭 Victor — COO / Orchestrator · [`coo.md`](agents/coo.md)
+Victor is the brain of the company and the only entry point to the team.
+- **What he does:**
+  - Turns a goal into steps and picks the right agent and the right model for each step.
+  - Runs independent steps in parallel and passes outputs forward, so Alex designs and then Sam builds.
+- **What he never does:** specialist work himself.
+- **Model:** always the strongest one (Opus).
+- **Every brief he writes states:** the goal, context, constraints, expected output, stage, and how the work will be verified.
+- **His other jobs:**
+  - Sends careful builds through Oscar's gate.
+  - Keeps the company memory up to date.
+  - Suggests a paid decision model only when a step passes an explicit five-question test.
+
+### 🛠️ Sam — Software Engineer · [`software-engineer.md`](agents/software-engineer.md)
+Sam is the full-stack builder. He works across:
+- Python, TypeScript, React, FastAPI and SQL
+- Electron desktop apps
+- Browser games (Phaser, Three.js)
+- Code-rendered video
+
+**How he works:**
+- He follows *minimal-change engineering*: the smallest correct diff.
+- He works test-first, debugs systematically to the root cause, and won't say "done" until he has run it and shown the output.
+- Before non-trivial work, he names the 2–3 tradeoffs that matter.
+- He designs the data model from the access patterns first.
+
+He builds the UIs that Alex designs, and never ships or deploys without approval.
+
+### 🧠 Neo — AI Engineer · [`ai-engineer.md`](agents/ai-engineer.md)
+Neo builds the AI core: LLM integration, prompt engineering, NLP, and agentic or multi-agent architecture. The AEYS system itself is one of these.
+
+**How he works:**
+- **Eval-driven:** He never tunes a prompt by feel. He collects real outputs, groups the failures, fixes the biggest group, and re-runs.
+- **One decision per step:** For each step he decides whether code or an LLM should do it. Every LLM step gets a fallback.
+- **Untrusted input:** He treats all outside text as possible prompt injection.
+
+He keeps the house rule: local models only do thin jobs (speech-to-text, TTS), and the reasoning stays with Claude.
+
+### 📊 Dana — Data Scientist · [`data-scientist.md`](agents/data-scientist.md)
+Dana turns data into decisions. Her work covers statistics, ML modelling, SQL, A/B and cohort analysis, charts and dashboards.
+
+**How she works:**
+1. She profiles the data first.
+2. She queries, models or tests it.
+3. She checks the methodology and looks for bias before sharing anything.
+4. She delivers an insight with a clear recommendation, not just numbers.
+
+She is rigorous and never overclaims.
+
+### 🎨 Alex — Designer · [`designer.md`](agents/designer.md)
+Alex owns how everything looks and feels:
+- Graphics and image-prompt engineering
+- Brand identity
+- UI/UX for software and games
+- Direction for code-rendered video
+
+**How Alex works:**
+- **UI/UX:** Alex sets a design system, writes the spec and hands it to Sam. After the build, Alex audits the result.
+- **Video:** Alex writes a brand kit and a second-by-second storyboard, and the founder approves the look before anything is built.
+
+**Hard rules:** Alex designs and never writes code. No image is ever faked, and a missing tool is reported plainly.
+
+### 📣 Tess — Social Media Manager · [`social-media-manager.md`](agents/social-media-manager.md)
+Tess has three modes:
+- **Strategy:** content calendars, platform differences, hashtag sets, posting cadence.
+- **Production:** a full package for each post: visual, caption and hashtags. For video she adds a script and a spec for each platform's cut.
+- **Research:** a fact-checked brief on the real story behind a piece of content.
+
+**Hard rules:** Tess never invents facts and never posts. The founder reviews and posts everything.
+
+### 🔍 Oscar — Observer / Quality Gate · [`observer.md`](agents/observer.md)
+Oscar is the team's independent eyes. **He never fixes another agent's work.** He returns a verdict of **PASS** or **SEND BACK**, and every finding comes with a severity and evidence (`file:line`, command output, or a source).
+
+He runs the verifier himself and checks the work by type:
+- **Code:** tests, review, QA, a security audit, and a check for over-engineering.
+- **Design:** accessibility and design anti-patterns.
+- **Content:** every claim must have a source.
+- **Analysis:** methodology and bias.
+- **Video:** frames, audio sync, legibility and licenses.
+
+He also owns the product eval sets and the error analysis. When asked, he reviews how the team itself is performing.
+
+### 🧩 Nora — Hiring Manager · [`hiring-manager.md`](agents/hiring-manager.md)
+Nora grows and maintains the team itself.
+
+**Placement:** When a new repo, skill or tool shows up, she works out what it really is and then places it.
+- Anything that needs a paid key or an outside service is parked.
+- Nothing is added "just in case".
+- She prefers adding to an existing agent over creating a new one.
+
+**Distillation:** She merges overlapping personas and skills into one clean version. She never just stacks them together, because a bloated prompt reasons worse.
+
+---
+
 ## Memory: shared Obsidian vault
 
 Plain Markdown with no index or database. It is read and written only when the team is called.
