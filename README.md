@@ -110,17 +110,6 @@ A from-scratch voice assistant for Windows with a $0 running-cost target. It is 
   - **Dana** owns the trace schema, the evals and the metrics.
   - **Oscar** runs the phase-gate reviews.
 
-### AEYS Video Studio — motion graphics in code
-Brand films and intros written as HTML/CSS/GSAP and rendered locally to MP4 with HyperFrames. There are no paid video models in the loop.
-- **Brand kit v2:**
-  - A 7-color palette.
-  - 5 open-license (OFL) typefaces. A paid font was declined, and Rubik Mono One stands in for it.
-  - A library of motion, transitions, textures and SFX moods.
-- **AEYS intro:** a 15-second intro.
-  - **v1:** Oscar sent it back with frame-level evidence: a logo collision, a 1-frame audio lead, timing drift from the spec, and masked SFX.
-  - **v2:** fixed those findings and passed Oscar's re-check.
-- **Roles:** Alex directs (brand kit and storyboard), Sam builds and renders, Tess writes the script, and Oscar checks every cut against the storyboard: frames, audio sync, legibility and licenses.
-
 ### Open-source apps (AEYS Innovations)
 - **[TONY App](https://github.com/aesatyilmaz/TONY-App):** say "Tony", then a command. It is a fully local Windows voice assistant with 63 fixed commands and webcam gesture input. There is no cloud, no account and no API key.
 - **[VISION App](https://github.com/aesatyilmaz/VISION-App):** control the computer with your hands through a webcam. You can move the mouse, click, scroll, change the volume and switch windows. It runs locally and is packaged as a double-click Windows app.
@@ -131,8 +120,6 @@ Brand films and intros written as HTML/CSS/GSAP and rendered locally to MP4 with
 - **Persona distillation and de-duplication.** Each agent is synthesized from curated open-source agent libraries into one focused, non-overlapping persona. Nora enforces this on every addition.
 - **Right-sized models.** Model choice happens per step, not per agent, so cost tracks task difficulty.
 - **Independent verification.** The reviewer runs the verifier itself (tests, previews, frame and audio checks for video) and never accepts "it works" without evidence.
-- **Code-rendered video.** Motion graphics are built as HTML/CSS/GSAP compositions and rendered locally to MP4 with HyperFrames. Alex directs, Sam builds, Tess scripts, and Oscar gates.
-
 ---
 
 ## Repository layout
